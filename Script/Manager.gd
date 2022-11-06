@@ -25,9 +25,9 @@ func _physics_process(delta):
 func _collected_token(direction, position):
 	
 	var tab = [cheminSon1,cheminSon2,cheminSon3,cheminSon4,cheminSon5]
-	$AudioStreamPlayer2D.stream = tab[coin]
-	$AudioStreamPlayer2D.volume_db = -15
-	$AudioStreamPlayer2D.play()
+	$Player/AudioStreamPlayer2D.stream = tab[coin]
+	$Player/AudioStreamPlayer2D.volume_db = -15
+	$Player/AudioStreamPlayer2D.play()
 	coin = coin + 1
 	if ( coin == 5 ) :
 		coin = 0 
@@ -57,14 +57,14 @@ func _spawn_ball(launch_direction, spawn_position):
 	get_node(".").add_child(ball)
 
 func _jump_sound():
-	$AudioStreamPlayer2D.volume_db = 0
-	$AudioStreamPlayer2D.stream = jumpSound
-	$AudioStreamPlayer2D.play()
+	$Player/AudioStreamPlayer2D.volume_db = 0
+	$Player/AudioStreamPlayer2D.stream = jumpSound
+	$Player/AudioStreamPlayer2D.play()
 
 func _death_sound():
-	$AudioStreamPlayer2D.volume_db = -20
-	$AudioStreamPlayer2D.stream = deathSound
-	$AudioStreamPlayer2D.play()
+	$Player/AudioStreamPlayer2D.volume_db = -20
+	$Player/AudioStreamPlayer2D.stream = deathSound
+	$Player/AudioStreamPlayer2D.play()
 
 func _stop_score():
 	scoreMultiplier = 0
