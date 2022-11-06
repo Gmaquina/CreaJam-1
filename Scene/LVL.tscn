@@ -86,6 +86,7 @@ glow_enabled = true
 glow_intensity = 1.79
 glow_strength = 0.37
 glow_blend_mode = 0
+glow_hdr_luminance_cap = 40.0
 glow_high_quality = true
 
 [node name="LVL" type="Node2D"]
