@@ -12,7 +12,8 @@ func _on_gameover():
 	$"GameOver_Control".show()
 	self.set_process(true)
 	Engine.time_scale = 0.1 #TODO ? in game manager?
-	$"/root/LVL/Player".set_process(false) #TODO ? in game manager ?
+	$"/root/LVL"._stop_score()
+	$"/root/LVL/Player".set_physics_process(false) #TODO ? in game manager ?
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_accept"):

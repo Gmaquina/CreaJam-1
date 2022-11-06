@@ -71,6 +71,7 @@ func _physics_process(delta):
 	
 	
 	if is_jumping:
+		$"/root/LVL"._jump_sound()
 		var truc = ps.instance()
 		truc.global_position = global_position
 		get_tree().root.add_child(truc)

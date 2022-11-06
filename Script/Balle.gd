@@ -31,4 +31,5 @@ func _physics_process(_delta):
 		for i in get_slide_count():
 			collision = get_slide_collision(i).collider
 			if collision == player:
+				$"/root/LVL"._death_sound()
 				emit_signal("gameover")
