@@ -19,7 +19,7 @@ fill_from = Vector2( 0.425, 0 )
 fill_to = Vector2( 0.4375, 1 )
 
 [sub_resource type="Gradient" id=13]
-offsets = PoolRealArray( 0.148387, 0.464516, 1 )
+offsets = PoolRealArray( 0.148387, 0.477419, 1 )
 colors = PoolColorArray( 0.207843, 0, 0.129412, 0, 0.0392157, 0, 0.0313726, 0.243137, 0.207843, 0, 0.129412, 0 )
 
 [sub_resource type="GradientTexture" id=14]
@@ -477,7 +477,8 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [node name="LVL" type="Node2D"]
 script = ExtResource( 2 )
-SpawnPoints = [ Vector2( 180, 150 ), Vector2( 850, 150 ), Vector2( 300, 450 ), Vector2( 700, 450 ) ]
+SpawnPoints = [ Vector2( 300, 450 ), Vector2( 850, 165 ), Vector2( 180, 165 ), Vector2( 700, 450 ) ]
+BalleSpawnPoints = [ Vector2( 50, 450 ), Vector2( 50, 50 ), Vector2( 975, 450 ), Vector2( 975, 50 ) ]
 
 [node name="BackGround" type="Sprite" parent="."]
 position = Vector2( 512, 293 )
@@ -510,7 +511,7 @@ double_jump_min_strength = 75.0
 double_jump_max_strength = 150.0
 
 [node name="Token" parent="." instance=ExtResource( 4 )]
-position = Vector2( 703, 433 )
+position = Vector2( 700, 450 )
 
 [node name="Arene" type="TileMap" parent="."]
 modulate = Color( 2, 2, 4, 1 )
@@ -535,6 +536,3 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 5, 4, 0, 
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 8 )
-
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2( 702, 431 )

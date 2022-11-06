@@ -16,6 +16,7 @@ var scoreMultiplier = 0
 var coin = 0
 
 export(Array, Vector2) var SpawnPoints
+export(Array, Vector2) var BalleSpawnPoints
 
 func _physics_process(delta):
 	score = score + int(delta*scoreMultiplier)
@@ -37,7 +38,7 @@ func _collected_token(direction, position):
 func _spaw_token(current_token_position):
 	var token = MyTokenRessource.instance()
 	var random_spawn = SpawnPoints[int(rand_range(0, SpawnPoints.size()))]
-	while current_token_position.distance_to(random_spawn) < 2:
+	while current_token_position.distance_to(random_spawn) < 200:
 		random_spawn = SpawnPoints[int(rand_range(0, SpawnPoints.size()))]
 	token.global_position = random_spawn
 	scoreMultiplier += 100
@@ -47,7 +48,12 @@ func _spaw_token(current_token_position):
 func _spawn_ball(launch_direction, spawn_position):
 	var ball = MyBallRessource.instance() # Create a new Sprite.
 	ball.direction = launch_direction
-	ball.position = spawn_position + Vector2.UP*200
+	var random_spawn = BalleSpawnPoints[int(rand_range(0, BalleSpawnPoints.size()))]
+	while spawn_position.distance_to(random_spawn) < 400:
+		random_spawn = BalleSpawnPoints[int(rand_range(0, BalleSpawnPoints.size()))]
+	ball.global_position = random_spawn
+	ball.scale = Vector2.ONE * rand_range(0.25, 1)
+	ball.speed = 250 - (100 * ball.scale.x)
 	get_node(".").add_child(ball)
 
 func _jump_sound():
