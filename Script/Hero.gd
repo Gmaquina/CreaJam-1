@@ -37,7 +37,7 @@ func _physics_process(delta):
 	
 	var is_falling = _velocity.y > 0 and not is_on_floor()
 	var is_jumping = Input.is_action_just_pressed("jump") and is_on_floor()
-	var is_double_jumping = Input.is_action_just_pressed("jump") and is_falling
+	var is_double_jumping = Input.is_action_just_pressed("jump") #and is_falling
 	var is_jump_cancelled = Input.is_action_just_released("jump") and _velocity.y < 0.0
 	#var is_idling = is_on_floor() and is_zero_approx(_velocity.x)
 	#var is_running = is_on_floor() and not is_zero_approx(_velocity.x)
