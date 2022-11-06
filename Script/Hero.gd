@@ -10,15 +10,13 @@ export var double_jump_min_strength = 400.0
 export var double_jump_max_strength = 500.0
 export var gravity = 2000.0
 
+onready var anim = $AnimationPlayer
+const ps = preload("res://Scene/JumpEffect.tscn")
+
 var _jumps_made = 0
 var _velocity = Vector2.ZERO
 var _time_till_max_jump = 0.0
 var _time_till_max_double_jump = 0.0
-
-
-#func _ready():
-#	pass
-
 
 func _physics_process(delta):
 	var rightStrength = 0.0
@@ -72,3 +70,11 @@ func _physics_process(delta):
 	_velocity = move_and_slide(_velocity, Vector2.UP)
 	
 	
+	if is_jumping:
+		var truc = ps.instance()
+		truc.global_position = global_position
+		get_tree().root.add_child(truc)
+		anim.play("Jump")
+
+	if is_on_floor():
+		anim.play("idle")
