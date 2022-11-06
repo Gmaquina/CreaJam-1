@@ -30,14 +30,16 @@ func _physics_process(delta):
 	
 	var _horizontal_direction = rightStrength - leftStrength
 	
+	var is_boosting_jump = Input.is_action_pressed("jump") and _time_till_max_jump > 0
+	var is_boosting_double_jump = Input.is_action_pressed("jump") and _time_till_max_double_jump > 0
+	
 	_velocity.x = _horizontal_direction * speed
-	_velocity.y += gravity * delta
+	if !(is_boosting_jump or is_boosting_double_jump):
+		_velocity.y += gravity * delta
 	
 	var is_falling = _velocity.y > 0 and not is_on_floor()
 	var is_jumping = Input.is_action_just_pressed("jump") and is_on_floor()
-	var is_boosting_jump = Input.is_action_pressed("jump") and _time_till_max_jump > 0
 	var is_double_jumping = Input.is_action_just_pressed("jump") and is_falling
-	var is_boosting_double_jump = Input.is_action_pressed("jump") and _time_till_max_double_jump > 0
 	var is_jump_cancelled = Input.is_action_just_released("jump") and _velocity.y < 0.0
 	#var is_idling = is_on_floor() and is_zero_approx(_velocity.x)
 	#var is_running = is_on_floor() and not is_zero_approx(_velocity.x)
