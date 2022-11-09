@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="CreaJam#1"
-run/main_scene="res://Scene/LVL.tscn"
+run/main_scene="res://Scene/LVL1.tscn"
 config/icon="res://icon.png"
 
 [display]

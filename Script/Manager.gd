@@ -23,7 +23,6 @@ func _physics_process(delta):
 	$Hud._on_score_changed(score)
 
 func _collected_token(direction, position):
-	
 	var tab = [cheminSon1,cheminSon2,cheminSon3,cheminSon4,cheminSon5]
 	$Player/AudioStreamPlayer2D.stream = tab[coin]
 	$Player/AudioStreamPlayer2D.volume_db = -15
@@ -41,8 +40,11 @@ func _spaw_token(current_token_position):
 	while current_token_position.distance_to(random_spawn) < 200:
 		random_spawn = SpawnPoints[int(rand_range(0, SpawnPoints.size()))]
 	token.global_position = random_spawn
+	$Timer.start(5)
 	scoreMultiplier += 100
+	$Hud._on_combo_changed(scoreMultiplier/100)
 	score += 100 * scoreMultiplier/100
+	print(token.global_position)
 	get_node(".").add_child(token)
 
 func _spawn_ball(launch_direction, spawn_position):
@@ -68,3 +70,16 @@ func _death_sound():
 
 func _stop_score():
 	scoreMultiplier = 0
+
+
+func _on_Timer_timeout():
+	if scoreMultiplier > 1:
+		print(scoreMultiplier)
+		scoreMultiplier -= 200
+		$Hud._on_combo_changed(scoreMultiplier/100)		
+		$Timer.start(1)
+	elif scoreMultiplier > 0:
+		print(scoreMultiplier)
+		scoreMultiplier -= 100
+		$Hud._on_combo_changed(scoreMultiplier/100)		
+		$Timer.start(1)
