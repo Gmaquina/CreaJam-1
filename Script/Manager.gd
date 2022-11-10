@@ -25,7 +25,7 @@ func _physics_process(delta):
 func _collected_token(direction, position):
 	var tab = [cheminSon1,cheminSon2,cheminSon3,cheminSon4,cheminSon5]
 	$Player/AudioStreamPlayer2D.stream = tab[coin]
-	$Player/AudioStreamPlayer2D.volume_db = -15
+	$Player/AudioStreamPlayer2D.volume_db = -10
 	$Player/AudioStreamPlayer2D.play()
 	coin = coin + 1
 	if ( coin == 5 ) :
@@ -64,7 +64,7 @@ func _jump_sound():
 	$Player/AudioStreamPlayer2D.play()
 
 func _death_sound():
-	$Player/AudioStreamPlayer2D.volume_db = -20
+	$Player/AudioStreamPlayer2D.volume_db = -10
 	$Player/AudioStreamPlayer2D.stream = deathSound
 	$Player/AudioStreamPlayer2D.play()
 
